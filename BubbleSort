@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HomeWorkArrays
+{
+    class SortArrOfNum
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+            bool swap = false;
+            do
+            {
+                swap = false;
+                int prev = arr[0];
+                for (int i = 1; i < arr.Length; i++)
+                {
+                    if (arr[i] < prev)
+                    {
+                        arr[i - 1] = arr[i];
+                        arr[i] = prev;
+                        swap = true;
+                    }
+                    prev = arr[i];
+
+                }
+
+            } while (swap);
+
+            Console.WriteLine(string.Join(" ", arr));
+        }
+    }
+}
