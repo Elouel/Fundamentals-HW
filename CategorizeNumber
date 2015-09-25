@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Problem_3
+{
+    class CategorizeNumbers
+    {
+        static void Main(string[] args)
+        {
+            double[] arr = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
+
+            List<double> floatingNumb = new List<double>();
+            List<int> intNumb = new List<int>();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] % 1 != 0)
+                {
+                    floatingNumb.Add(arr[i]);
+                }
+                else
+                {
+                    intNumb.Add((int)arr[i]);
+                }
+            }
+
+            double minDouble = double.MaxValue;
+            double maxDouble = double.MinValue;
+            double sumDouble = 0;
+
+            int minInt = int.MaxValue;
+            int maxInt = int.MinValue;
+            int sumInt = 0;
+
+            for (int i = 0; i < floatingNumb.Count; i++)
+            {
+                if (minDouble > floatingNumb[i])
+                {
+                    minDouble = floatingNumb[i];
+                }
+
+
+                if (maxDouble < floatingNumb[i])
+                {
+                    maxDouble = floatingNumb[i];
+                }
+
+                sumDouble += floatingNumb[i];
+
+            }
+
+            double avgDouble = sumDouble / floatingNumb.Count;
+
+            for (int i = 0; i < intNumb.Count; i++)
+            {
+                if(minInt > intNumb[i])
+                {
+                    minInt = intNumb[i];
+                }
+                if (maxInt < intNumb[i])
+                {
+                    maxInt = intNumb[i];
+                }
+
+                sumInt += intNumb[i];
+            }
+
+            double avgInt = (double)sumInt / intNumb.Count;
+
+            Console.WriteLine("[" + string.Join(", ", floatingNumb) + "]" + " -> " + "min: {0}, max: {1}, sum: {2}, avg: {3:0.00}",minDouble,maxDouble,sumDouble,avgDouble);
+
+            Console.WriteLine("[" + string.Join(", ", intNumb) + "]" + " -> " + "min: {0}, max: {1}, sum: {2}, avg: {3}",minInt,maxInt,sumInt,avgInt);
+
+        }
+    }
+}
