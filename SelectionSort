@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Problem_2
+{
+    class SelectionSort
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int posOfNewMin = 0;
+            bool swap = false;
+            for (int first = 0; first < arr.Length; first++)
+            {
+                int min = arr[first];
+                for (int second = first + 1; second < arr.Length; second++)
+                {
+
+
+                    if (min > arr[second])
+                    {
+                        min = arr[second];
+                        posOfNewMin = second;
+                        swap = true;
+                    }
+
+                }
+                if (swap)
+                {
+                    arr[posOfNewMin] = arr[first];
+                    arr[first] = min;
+                }
+                swap = false;
+            }
+
+            Console.WriteLine(string.Join(" ", arr));
+        }
+    }
+}
